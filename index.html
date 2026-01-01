@@ -1,9 +1,130 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Happy Birthday</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>❤️Happy❤️Birthday❤️</title>
+    <link class="circle-icon" rel="icon" href="her1.jpg" type="image/png/jpg">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>🎉 Happy Birthday! 🎂</h1>
+    
+</body>
+
+<audio id="bgMusic" preload="auto" src="assets/music.mp3" loop></audio>
+
+<!-- Guided pages -->
+<main id="app" aria-live="polite">
+    <!-- Page 1: Locked Gift -->
+    <section class="page page-locked" id="page1" data-index="0" aria-hidden="false">
+        <div class="center">
+            <p class="eyebrow">For the most special person</p>
+            <h1 class="title">Happy Birthday,<span class="name"> Her Name</span></h1>
+            <button class="heart-btn large" id="openGift" aria-label="Open your gift"> 
+                <svg viewBox="0 0 24 24" class="icon-heart"><path d="M12 21s-7.3-4.9-10-8.1C-1 7.6 4.4 2 7.5 4.3 9 5.7 12 8 12 8s3-2.3 4.5-3.7C19.6 2 25 7.6 22 12.9 19.3 16.1 12 21 12 21z"></path></svg>
+                <span class="btn-text">Open Your Gift</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Page 2: Photo Flip Cards -->
+    <section class="page" id="page2" data-index="1" aria-hidden="true">
+        <div class="cards-instruction">Hover over the moments.</div>
+        <div class="cards" id="cards">
+            <!-- Cards: use a few high-quality moments -->
+            <article class="card">
+                <div class="card-face card-front" style="background-image:url('photos/photo1.jpg')" aria-hidden="false"></div>
+                <div class="card-face card-back">You make quiet mornings feel sacred.</div>
+            </article>
+            <article class="card">
+                <div class="card-face card-front" style="background-image:url('photos/photo2.jpg')"></div>
+                <div class="card-face card-back">Your laugh re-centers everything.</div>
+            </article>
+            <article class="card">
+                <div class="card-face card-front" style="background-image:url('photos/photo3.jpg')"></div>
+                <div class="card-face card-back">You see color where others see gray.</div>
+            </article>
+        </div>
+        <div class="controls">
+            <button class="heart-btn" data-target="2" aria-label="Continue" title="Continue">
+                <svg viewBox="0 0 24 24" class="icon-heart"><path d="M12 21s-7.3-4.9-10-8.1C-1 7.6 4.4 2 7.5 4.3 9 5.7 12 8 12 8s3-2.3 4.5-3.7C19.6 2 25 7.6 22 12.9 19.3 16.1 12 21 12 21z"></path></svg>
+            </button>
+        </div>
+    </section>
+
+    <!-- Page 3: Edit Of Her (The Moment) -->
+    <section class="page" id="page3" data-index="2" aria-hidden="true">
+        <div class="center video-wrap">
+            <p class="eyebrow">This is how I see you.</p>
+            <video id="page3Video" class="cinematic" playsinline muted>
+                <source src="videos/her_moment.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="controls">
+            <button class="heart-btn" aria-label="Continue"> 
+                <svg viewBox="0 0 24 24" class="icon-heart"><path d="M12 21s-7.3-4.9-10-8.1C-1 7.6 4.4 2 7.5 4.3 9 5.7 12 8 12 8s3-2.3 4.5-3.7C19.6 2 25 7.6 22 12.9 19.3 16.1 12 21 12 21z"></path></svg>
+            </button>
+        </div>
+    </section>
+
+    <!-- Page 4: Your Video Message -->
+    <section class="page" id="page4" data-index="3" aria-hidden="true">
+        <div class="center video-wrap">
+            <p class="eyebrow">I wanted to say this to you.</p>
+            <video id="page4Video" class="message" controls playsinline>
+                <source src="videos/message.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="controls">
+            <button class="heart-btn" aria-label="Continue"> 
+                <svg viewBox="0 0 24 24" class="icon-heart"><path d="M12 21s-7.3-4.9-10-8.1C-1 7.6 4.4 2 7.5 4.3 9 5.7 12 8 12 8s3-2.3 4.5-3.7C19.6 2 25 7.6 22 12.9 19.3 16.1 12 21 12 21z"></path></svg>
+            </button>
+        </div>
+    </section>
+
+    <!-- Page 5: Future Together -->
+    <section class="page" id="page5" data-index="4" aria-hidden="true">
+        <div class="center">
+            <h2>The future I imagine with you</h2>
+            <ul class="future-list">
+                <li>Small mornings in a sunlit kitchen</li>
+                <li>Road trips with no set route</li>
+                <li>Quiet bookstores and loud laughter</li>
+            </ul>
+            <div class="controls">
+                <button class="heart-btn" data-target="5" aria-label="One last thing…">One last thing…
+                    <svg viewBox="0 0 24 24" class="icon-heart"><path d="M12 21s-7.3-4.9-10-8.1C-1 7.6 4.4 2 7.5 4.3 9 5.7 12 8 12 8s3-2.3 4.5-3.7C19.6 2 25 7.6 22 12.9 19.3 16.1 12 21 12 21z"></path></svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 6: Typing Letter -->
+    <section class="page" id="page6" data-index="5" aria-hidden="true">
+        <div class="center letter-wrap">
+            <div id="letter" class="letter" aria-live="polite"></div>
+        </div>
+        <div class="controls">
+            <button class="heart-btn" aria-label="Continue"> 
+                <svg viewBox="0 0 24 24" class="icon-heart"><path d="M12 21s-7.3-4.9-10-8.1C-1 7.6 4.4 2 7.5 4.3 9 5.7 12 8 12 8s3-2.3 4.5-3.7C19.6 2 25 7.6 22 12.9 19.3 16.1 12 21 12 21z"></path></svg>
+            </button>
+        </div>
+    </section>
+
+    <!-- Page 7: Final Sentence -->
+    <section class="page" id="page7" data-index="6" aria-hidden="true">
+        <div class="center final">
+            <p class="final-line">Whatever comes next, I choose you.</p>
+        </div>
+    </section>
+
+    <!-- Global Back Arrow (subtle) -->
+    <button id="backBtn" class="back-btn" aria-label="Back" title="Back">
+        <svg viewBox="0 0 24 24" class="icon-arrow"><path d="M15 18l-6-6 6-6"></path></svg>
+    </button>
+</main>
+<script src="script.js"></script>
 </body>
 </html>
