@@ -32,15 +32,22 @@ body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neu
 .icon-arrow{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2}
 
 /* Cards */
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:20px;max-width:980px;margin:28px auto}
-.card{perspective:1200px;cursor:pointer;height:220px;border-radius:12px}
-.card-face{position:relative;border-radius:12px;backface-visibility:hidden;transition:transform 600ms cubic-bezier(.2,.9,.2,1),opacity 300ms}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:20px;max-width:980px;margin:28px auto;padding: 0 16px; /* IMPORTANT for mobile */}
+.card{
+  position: relative; /* 🔥 REQUIRED */
+  perspective:1200px;
+  cursor:pointer;
+  height:220px;
+  border-radius:12px;
+  transform-style: preserve-3d;
+ }
+.card-face{position:absolute;border-radius:12px;backface-visibility:hidden;transition:transform 600ms cubic-bezier(.2,.9,.2,1),opacity 300ms;inset: 0;}
 .card-front{background-size:cover;background-position:center;height:100%;box-shadow:0 10px 30px rgba(0,0,0,0.5)}
 .card-back{position:absolute;inset:0;padding:20px;background:linear-gradient(180deg,rgba(0,0,0,0.45),rgba(0,0,0,0.6));color:#fff;transform:rotateY(180deg);display:flex;align-items:center;justify-content:center;text-align:center;font-size:16px}
 .card.flipped .card-front{transform:rotateY(180deg)}
 .card.flipped .card-back{transform:rotateY(0)}
 .cards-instruction{
-  position:absolute;
+  position:relative;
   inset:0;
   display:flex;
   align-items:center;
@@ -50,11 +57,26 @@ body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neu
   letter-spacing:0.05em;
   color:rgba(255,255,255,0.75);
   text-align:center;
-
+  isolation: isolate; /* 🔥 IMPORTANT */
   pointer-events:none; /* CRITICAL */
   z-index:10;
-
   transition:opacity 600ms ease;
+}
+.card-over-hover {
+  position: absolute;
+  top: 38%;               /* slightly above center */
+  left: 50%;              /* REQUIRED */
+  transform: translate(-50%, -50%);
+  bottom: 100px;
+  font-size: 1.15rem;
+  letter-spacing: 0.05em;
+  color: rgba(255,255,255,0.75);
+  text-align: center;
+
+  pointer-events: none;
+  z-index: 10;
+
+  transition: opacity 600ms ease;
 }
 
 /* Video layouts */
@@ -84,5 +106,6 @@ video{width:100%;height:auto;border-radius:12px;box-shadow:0 20px 50px rgba(0,0,
 
 /* subtle fade-in for controls */
 .controls{position:fixed;bottom:32px;left:0;right:0;display:flex;justify-content:center}
+
 
 
