@@ -49,11 +49,16 @@
 		try{ if(document.activeElement && document.activeElement !== document.body) document.activeElement.blur(); }catch(e){}
 
 		pages.forEach((p,i)=>{
-			const visible = i===index;
-			p.setAttribute('aria-hidden', visible? 'false':'true');
-			// use inert to block interaction on inactive pages; fallback to attribute if property unsupported
-			try{ p.inert = !visible; }catch(e){ if(!visible) p.setAttribute('inert',''); else p.removeAttribute('inert'); }
-		});
+  const visible = i===index;
+
+  if(visible){
+    p.removeAttribute('inert');
+    p.setAttribute('aria-hidden','false');
+  } else {
+    p.setAttribute('aria-hidden','true');
+    p.setAttribute('inert','');
+  }
+});
 
 		current = index;
 		// back button hidden on page 1
@@ -224,4 +229,7 @@
 	backBtn.style.display = 'none';
 
 })();
+document.addEventListener('DOMContentLoaded', () => {
+  showPage(0);
+});
 
